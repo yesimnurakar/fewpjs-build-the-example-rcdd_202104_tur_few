@@ -4,7 +4,7 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 const errorModal = document.getElementById("modal");
-errorModal.classList.add("hidden");
+errorModal.setAttribute("class","hidden");
 
 
 document.addEventListener("DOMContentLoaded", () => {
