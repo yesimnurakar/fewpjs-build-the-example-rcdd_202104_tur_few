@@ -8,29 +8,29 @@ errorModal.setAttribute("class","hidden");
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const heart = document.getElementsByClassName('like-glyph')
-  for (const heart of likes) {
-    heart.addEventListener("click", clickHeart)
+  const hearts = document.getElementsByClassName('like-glyph')
+  for (const like of hearts) {
+    like.addEventListener("click", clickHeart)
   }
 });
 
 function clickHeart(event) {
-  let heartShape = event.target;
-  if (heartShape.innerText == EMPTY_HEART) {
+  let heart = event.target;
+  if (heart.innerText == EMPTY_HEART) {
     mimicServerCall()
     .then(response => {
-      heartShape.innerText = FULL_HEART;
-      heartShape.setAttribute("class", "activated-heart");
+      heart.innerText = FULL_HEART;
+      heart.setAttribute('class', 'activated-heart');
     })
     .catch(error => {
       const modal = document.getElementById('modal');
-      modal.removeAttribute("class", "hidden");
+      modal.removeAttribute('class', 'hidden');
       modal.innerText = "Server failed.";
-      setTimeout(() => modal.setAttribute("class","hidden"), 3000);
+      setTimeout(() => modal.setAttribute('class', 'hidden'), 5000);
     })
   } else {
-    heartShape.innerText = EMPTY_HEART;
-    heartShape.removeAttribute("class", "activated-heart");
+    heart.innerText = EMPTY_HEART;
+    heart.removeAttribute('class', 'activated-heart');
   }
 }
 
